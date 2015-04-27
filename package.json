@@ -1,0 +1,33 @@
+{
+  "name": "launcher",
+  "version": "1.0.0",
+  "description": "Launcher.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesbros/launcher.git"
+  },
+  "author": "thesbros",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/thesbros/launcher/issues"
+  },
+  "homepage": "https://github.com/thesbros/launcher",
+  "devDependencies": {
+    "axis": "^0.3.0",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-eslint": "^0.9.0",
+    "gulp-if": "^1.2.5",
+    "gulp-plumber": "^1.0.0",
+    "gulp-run-electron": "^1.0.0",
+    "gulp-sourcemaps": "^1.4.0",
+    "gulp-stylus": "^2.0.1",
+    "gulp-util": "^3.0.4",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.0.2"
+  }
+}

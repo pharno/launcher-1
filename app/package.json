@@ -1,0 +1,8 @@
+{
+  "name": "launcher",
+  "version": "1.0.0",
+  "main": "scripts/main/index.js",
+  "dependencies": {
+    "react": "^0.13.2"
+  }
+}
