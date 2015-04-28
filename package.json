@@ -29,6 +29,7 @@
     "merge-stream": "^0.1.7",
     "nib": "^1.1.0",
     "require-dir": "^0.3.0",
-    "run-sequence": "^1.0.2"
+    "run-sequence": "^1.0.2",
+    "vinyl-paths": "^1.0.0"
   }
 }
