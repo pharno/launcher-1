@@ -1,18 +1,6 @@
 import React from "react";
-
-class App extends React.Component
-{
-	constructor(props)
-	{
-		super(props);
-	}
-
-	render()
-	{
-		return (
-			<p>test</p>
-		);
-	}
-}
+// have to use full path because relative require doesn't work when loaded
+// through script tag
+import App from "./scripts/browser/classes/App";
 
 React.render(<App />, document.getElementById("app"));

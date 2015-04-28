@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "scripts/main/index.js",
   "dependencies": {
+    "font-awesome-stylus": "^4.3.0",
     "react": "^0.13.2"
   }
 }
