@@ -1,4 +1,5 @@
-@import "axis"
+vendor-prefixes = webkit official
+@import "nib"
 $fa-font-path = "../node_modules/font-awesome-stylus/fonts"
 @import "../node_modules/font-awesome-stylus/stylus/font-awesome"
 @import "./variables"
@@ -17,19 +18,24 @@ $fa-font-path = "../node_modules/font-awesome-stylus/fonts"
 
 body, html
 {
-	margin: 0
-	padding: 0
+	height: 100%
 	font-family: "Lato"
 	color: $text-color
+	//background-color: $bg-color
 }
 
-#app > div
+#app
 {
-	display: flex
-	flex-grow: 1
-	height: 100vh
-	margin: 0
-	padding: 0
+	height: 100%
+
+	> div
+	{
+		display: flex
+		flex-directon: row
+		margin: 0
+		padding: 0
+		height: 100%
+	}
 }
 
 #sidebar
@@ -42,7 +48,7 @@ body, html
 	{
 		input
 		{
-			border: 2px solid $search-bg-color
+			border: 0
 			width: 100%
 			height: 30px
 			background-color: $search-bg-color
@@ -97,7 +103,57 @@ body, html
 
 #content
 {
-	padding-left: 5px
-	background-color: #000
+	height: 100%
 	flex: 1 0
+
+	header
+	{
+		min-height: 50%
+		padding: 30px
+		background: linear-gradient(rgba($bg-color, 0.9), rgba($bg-color, 0.9)),
+					url("../images/supermeatboy-bg.png")
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center
+		border-bottom: 2px solid $content-separator
+
+		#info
+		{
+			display: flex
+			height: 190px
+
+			img
+			{
+				width: 190px
+				margin-right: 40px
+			}
+
+			span
+			{
+				font-size: 2em
+			}
+		}
+	}
+
+	footer
+	{
+		// todo: fix height height: 100%
+		display: flex
+		flex-direction: row
+
+		#share
+		{
+			flex: 1 1
+			padding: 5px
+			background-color: $content-share-bg-color
+			border-right: 2px solid $content-separator
+		}
+
+		#more-like
+		{
+			flex: 1 1
+			background-color: $content-more-like-bg-color
+			padding: 5px;
+		}
+	}
 }
