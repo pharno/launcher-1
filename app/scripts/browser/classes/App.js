@@ -1,15 +1,21 @@
 import React from "react";
-import Game from "./Game";
+import Game from "../game";
 
 export default class App extends React.Component
 {
-	state = {
-		games: JSON.parse(localStorage.getItem("games") || "[]")
-	};
-
 	constructor(props)
 	{
 		super(props);
+		let games = [];
+		for (let game of JSON.parse(localStorage.getItem("games") || "[]"))
+		{
+			games.push(new Game(game.name, game.path));
+		}
+
+		this.state = {
+			open: null,
+			games: games
+		};
 	}
 
 	componentDidUpdate()
@@ -28,16 +34,28 @@ export default class App extends React.Component
 		path.value = "";
 	}
 
+	launch(game)
+	{
+		this.setState({open: game.name});
+		game.on("close", () => this.setState({open: null}));
+		game.launch();
+	}
+
 	render()
 	{
 		return (
 			<div>
+				<p>Currently open: {this.state.open || "None"}</p>
 				<input id="name" type="text" placeholder="Name" />
 				<input id="path" type="text" placeholder="Executable path" />
 				<button onClick={this.addGame.bind(this)}>Add game</button>
 
 				{this.state.games.map((game) =>
-					<Game key={game.name} name={game.name} path={game.path} />)}
+					<button
+						key={game.name}
+						onClick={this.launch.bind(this, game)}>
+						{`Launch ${game.name}`}
+						</button>)}
 			</div>
 		);
 	}
