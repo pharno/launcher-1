@@ -19,11 +19,13 @@ export default class App extends React.Component
 
 	addGame()
 	{
-		let name = document.getElementById("name").value;
-		let path = document.getElementById("path").value;
+		let name = document.getElementById("name");
+		let path = document.getElementById("path");
 		this.setState({
-			games: this.state.games.concat({name: name, path: path})
+			games: this.state.games.concat({name: name.value, path: path.value})
 		});
+		name.value = "";
+		path.value = "";
 	}
 
 	render()
