@@ -1,5 +1,7 @@
 import React from "react";
 import Game from "../game";
+import fs from "fs";
+import Steam from "./Steam";
 
 export default class App extends React.Component
 {
@@ -11,6 +13,21 @@ export default class App extends React.Component
 		{
 			games.push(new Game(game.name, game.path));
 		}
+
+		let steamLocation = localStorage.getItem("steamLocation") || "/Users/chatz/Library/Application Support/Steam/SteamApps";
+
+		let steam = new Steam();
+		fs.readdir(steamLocation, function(err, files){
+			for (let file of files){
+				if (file.indexOf(".acf") != -1){
+					fs.readFile(steamLocation+"/"+file, {encoding:"utf-8"},function(err, data){
+						console.log(steam.parseAcf(data));
+
+					})
+					break;
+				};
+			}
+		});
 
 		this.state = {
 			open: null,
