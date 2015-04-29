@@ -1,5 +1,6 @@
 var gulp = require("gulp");
+var prod = require("../prod");
 
 var tasks = ["build"];
-if (process.argv.indexOf("--prod") === -1) tasks.push("watch");
+if (!prod) tasks.push("watch");
 gulp.task("default", tasks);
