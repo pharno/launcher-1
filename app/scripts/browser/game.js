@@ -22,8 +22,7 @@ export default class Game extends EventEmitter
 		else
 		{
 			let child = spawn(this.path, {cwd: dirname(this.path)});
+			child.on("exit", () => this.emit("close"));
 		}
-		
-		child.on("exit", () => this.emit("close"));
 	}
 };
