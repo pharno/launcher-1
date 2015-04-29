@@ -15,11 +15,15 @@ export default class Game extends EventEmitter
 
 	launch()
 	{
-		if (this.path.indexOf("://") > -1){
+
+		if (this.path.includes("://"))
+		{
 			shell.openExternal(this.path);
-		} else {
-			let child = spawn(this.path, {cwd: dirname(this.path)});
 		}
-		child.on("exit", () => this.emit("close"));
+		else
+		{
+			let child = spawn(this.path, {cwd: dirname(this.path)});
+			child.on("exit", () => this.emit("close"));
+		}
 	}
 };
