@@ -1,6 +1,7 @@
 import remote from "remote";
 import {EventEmitter} from "events";
 import {dirname} from "path";
+import shell from "shell";
 const {spawn} = remote.require("child_process");
 
 export default class Game extends EventEmitter
@@ -14,7 +15,15 @@ export default class Game extends EventEmitter
 
 	launch()
 	{
-		let child = spawn(this.path, {cwd: dirname(this.path)});
+		if (this.path.includes("://"))
+		{
+			shell.openExternal(this.path);
+		}
+		else
+		{
+			let child = spawn(this.path, {cwd: dirname(this.path)});
+		}
+		
 		child.on("exit", () => this.emit("close"));
 	}
 };
